@@ -9,14 +9,15 @@
     
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
-            
-
+                
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 
 <div class="page-header">
 <div class="container-fluid">
    <div class="row">
-	<img src="//placehold.it/350x150" class="img-responsive center-block">
+	<img src="images/lacemarketlogonew.png" class="img-responsive center-block">
    </div>
 </div>
 </div>
@@ -25,8 +26,8 @@
     
     
 <body>
-
- <nav class="navbar navbar-inverse">
+<div class="container-fluid">
+ <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Lace Market</a>
@@ -34,7 +35,7 @@
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
       <li><a href="#">Watchlist</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-search"></span>Search</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
@@ -43,58 +44,117 @@
     </ul>
   </div>
 </nav>
+ 
+    
 
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
+<section class="row">
+    
+<div class="col-md-2 col-lg-3">
+<div class="panel-group">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse3">Search</a>
+      </h4>
     </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-danger">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-success">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
+    <div id="collapse3" class="panel-collapse collapse">
+        <form role="search">
+            <div class="form-group">
+                Search listing: <input type="text" class="form-control" placeholder="Title/Description Contains...">
+                Max Price: <input type="text" class="form-control" placeholder="Enter Value">
+                Find User: <input type="text" class="form-control" placeholder="Enter Username">
+            </div>
+                <button type="submit" class="btn btn-default">Search</button>
+        </form>
     </div>
   </div>
-</div><br>
-
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">Categories</a>
+      </h4>
     </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">Title</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Description</div>
-      </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Jumperskirt</li>
+        <li class="list-group-item">One Piece</li>
+        <li class="list-group-item">Blouse</li>
+        <li class="list-group-item">Skirt</li>
+      </ul>
     </div>
   </div>
-</div><br><br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2">Brands</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <ul class="list-group">
+        <li class="list-group-item">Angelic Pretty</li>
+        <li class="list-group-item">Alice and The Pirates</li>
+        <li class="list-group-item">Baby The Stars Shine Bright</li>
+        <li class="list-group-item">Innocent World</li>
+        <li class="list-group-item">Metamorphose</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+    
+   <div class="col-md-10 col-lg-9">         
+            
+        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">Innocent World JSK</div>
+            <div class="panel-body"><img src="images/img1.png"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">Current Price: $105</div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Fox Feather JSK</div>
+            <div class="panel-body"><img src="images/img2.png" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">Current Price: $89</div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">AATP Set</div>
+            <div class="panel-body"><img src="images/img3.png"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">Current Price: $230</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">AATP Bonnet</div>
+            <div class="panel-body"><img src="images/img4.png" class="img-responsive"  alt="Image"></div>
+            <div class="panel-footer">Current Price: $50</div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Angelic Pretty OP</div>
+            <div class="panel-body"><img src="images/img5.png" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">Current Price: $250</div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">R-Series Blouse</div>
+            <div class="panel-body"><img src="images/img6.png" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">Current Price: $40</div>
+          </div>
+        </div>
+      </div>
+        
+    </div>
+</section>
+<br><br>
 
 <div class="text-center">
  <ul class="pagination text-center">
@@ -111,9 +171,12 @@
 </footer>
 
     
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
 <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    
+
+</div>
 </body>
 </html>
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
