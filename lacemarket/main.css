@@ -1,19 +1,31 @@
-div{
-  font-size:140%;
-  
+.page-header {
+    margin-top: 0%;
 }
 
-div[class^="visible"]{
-  border: 1px solid black;
-  margin-top:3%;
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-image: url(images/lacebg.jpg);
+    background-repeat: repeat;
+    border-left: 1px solid powderblue;
+    border-right: 1px solid powderblue;
 }
 
-div[class$=lg]{
-  color:red;
+.container-fluid {
+    background-color: white;
+    margin-bottom: 0%;
 }
-div[class$=md]{
-  color:blue;
+
+.page-header {
+    background-color:white;
+    margin-bottom: 0px;
 }
-div[class$=sm]{
-  color:green;
+
+.navbar {
+    margin-top: 0px;
+}
+
+.form-group {
+    margin: 10px;
+    
 }
