@@ -1,0 +1,23 @@
+.page-header {
+    margin-top: 0%;
+}
+
+body {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.container-fluid {
+    background-color: white;
+    margin-bottom: 0%;
+}
+
+.page-header {
+    background-color:white;
+    margin-bottom: 0px;
+}
+
+.navbar {
+    margin-top: 0px;
+}
