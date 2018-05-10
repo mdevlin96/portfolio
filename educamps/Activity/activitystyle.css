@@ -1,0 +1,43 @@
+.page-header img{
+    max-height: 100%;
+    max-width: 100%;
+}
+.page-header {
+    margin-top: 0%;
+}
+
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-image:url(/images/gear_pattern.png);
+    background-repeat: repeat;
+    border-left: 1px solid cadetblue;
+    border-right: 1px solid cadetblue;
+}
+
+.container-fluid {
+    background-color: white;
+    margin-bottom: 0%;
+}
+
+
+.navbar {
+    margin-top: 0px;
+}
+
+footer {
+    margin-bottom: 0px;
+}
+
+footer p {
+    font-size: 12px;
+}
+
+.image {  
+    padding: 20px;
+}
+
+h1, h2 {
+    
+    font-family:gill sans MT;
+}

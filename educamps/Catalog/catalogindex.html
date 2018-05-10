@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<title>EduCamps</title>
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+                
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="catalogstyle.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="page-header">
+            <img src="/images/header.png" class="img-responsive center-block" alt="Header">
+    </div>
+</div>
+    
+</head>
+    
+    
+<body>
+    
+<div class="container-fluid">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="homeindex.php">Kids Camp</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="homeindex.php">Home</a></li>
+        <li><a href="registration.php">Register</a></li>
+        <li><a href="catalogindex.php">Catalog</a></li>
+        <li><a href="forumindex.php">Forum</a></li>
+        <li><a href="momentindex.html">Moments</a></li>
+        <li><a href="visualindex.html">Visualization</a></li>
+        <li><a href="activityindex.html">Activites</a></li>
+    
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart </a></li>
+        
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up
+        <span class="caret"></span></a>  
+             <ul class="dropdown-menu">
+                    <div class="form-group">
+                        <label><b>Username</b></label>
+                          <input type="text" placeholder="Enter Username" name="name" method="post" action="register.php" required>
+                          <label><b>Email</b></label>
+                          <input type="text" placeholder="Enter Email" name="email" method="post" action="register.php" required />
+                          <label><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="pwd" method="post" action="register.php" required>
+                    </div>
+            </ul>
+        </li>
+            
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" method="post" action="login.php">
+                    <input type="text" class="form-control" placeholder="Password" method="post" action="login.php">
+                    <input type="radio" name="remember" value="yes" method="post" action="login.php"> Remember me<br>
+                </div>
+            </ul>
+        </li>
+        
+    
+    </ul>
+  </div>
+</nav>
+ 
+    
+<section class="row">
+    
+   <div class="col-md-10 col-lg-10">         
+            
+        <div class="textcontainer">
+            <h1>Catalog</h1>
+            <p>Purchase official EduCamps gear here!</p>
+        </div>
+
+        
+    </div>
+       
+</section>
+<br><br>
+<section class="row">
+    
+   <div class="col-md-10 col-lg-12">  
+   <form  action="catalogindex.php" method="post"> 
+       
+        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">Backpack</div>
+            <div class="panel-body"><img src="images/backpack.jpg"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('1')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">T-Shirt</div>
+            <div class="panel-body"><img src="images/tshirt.jpg" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('2')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Lanyard</div>
+            <div class="panel-body"><img src="images/lanyard.png"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('3')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+       </div>
+       
+        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">Poster</div>
+            <div class="panel-body"><img src="images/poster.jpg"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('4')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Water bottle</div>
+            <div class="panel-body"><img src="images/water_bottle.jpg" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('5')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Sweatshirt</div>
+            <div class="panel-body"><img src="images/sweatshirt.png"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('6')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+       </div>
+       
+        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">Crayons</div>
+            <div class="panel-body"><img src="images/crayons.jpg"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('7')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Rasberry Pi</div>
+            <div class="panel-body"><img src="images/rasberry_pi.jpeg" class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('8')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12"> 
+          <div class="panel panel-info">
+            <div class="panel-heading">Arduino Board </div>
+            <div class="panel-body"><img src="images/arduine_board.jpg"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('9')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+       </div>
+       
+        <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+          <div class="panel panel-info">
+            <div class="panel-heading">Laptop Computer</div>
+            <div class="panel-body"><img src="images/laptop.png"  class="img-responsive"   alt="Image"></div>
+            <div class="panel-footer">
+                <p>$</p>
+                <input name = "submit" type="submit" value="Add to Cart" onclick="if(!getProductName('10')) {return false;}"/>
+            </div>
+          </div>
+        </div>
+       </div>
+       
+    </form>
+    </div>
+
+    
+       
+</section>
+<br><br>
+
+<script>
+    function getProductName(id) {
+        var myhidden = document.getElementById("hiddencontainer");
+        myhidden.value=id;
+        console.log(document.getElementById("hiddencontainer").value);
+        if(!$_COOKIE["id"]) {
+            alert("Please sign in!");
+            return false;
+        }
+    }
+</script>
+
+<?php
+
+    if (isset($_POST['submit'])) {
+    $servername = getenv('IP');
+    $username = getenv('C9_USER');
+    $password = "";
+    $database = "c9";
+    $dbport = 3306;
+
+    // Create connection
+    $db = new mysqli($servername, $username, $password, $database, $dbport);
+
+    // Check connection
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    } 
+     else echo "Connected successfully (".$db->host_info.")";
+    
+    
+    $productID = $_POST["hiddencontainer"];
+    
+    $sql ="INSERT INTO shoppingcart (type, productID, userId) 
+    VALUES('product', '".$productID."', '".$_COOKIE["id"]."')";
+    
+	echo($sql);
+
+	if ($db->query($sql)==TRUE){
+       	echo "record created";
+	    } else {
+	     echo"ERRROR:" .$sql . "<br>" . $db->error;
+	    $db->close();
+	  } 
+    
+}
+?>
+<footer class="container-fluid text-center">
+  <p>Copyright 2017 EduCamps_DreamTeam</p>  
+</footer>
+
+    
+    
+<!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</div>
+</body>
+
+
+</html>

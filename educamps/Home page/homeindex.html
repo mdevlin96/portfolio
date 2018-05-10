@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<title>EduCamps</title>
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+                
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="homestyle.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="/assets/gmap3.js?body=1" type="text/javascript"></script>
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="page-header">
+            <img src="/images/header.png" class="img-responsive center-block" alt="Header">
+    </div>
+</div>
+    
+</head>
+    
+    
+<body>
+    
+<div class="container-fluid">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+        <li><a href="homeindex.php">Home</a></li>
+        <li><a href="registration.php">Register</a></li>
+        <li><a href="catalogindex.php">Catalog</a></li>
+        <li><a href="forumindex.php">Forum</a></li>
+        <li><a href="momentindex.html">Moments</a></li>
+        <li><a href="visualindex.html">Visualization</a></li>
+        <li><a href="activityindex.html">Activites</a></li>
+    
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart </a></li>
+        
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up
+        <span class="caret"></span></a>  
+             <ul class="dropdown-menu">
+                    <div class="form-group">
+                        <label><b>Username</b></label>
+                          <input type="text" placeholder="Enter Username" name="name" method="post" action="register.php" required>
+                          <label><b>Email</b></label>
+                          <input type="text" placeholder="Enter Email" name="email" method="post" action="register.php" required />
+                          <label><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="pwd" method="post" action="register.php" required>
+                    </div>
+            </ul>
+        </li>
+            
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" method="post" action="login.php">
+                    <input type="text" class="form-control" placeholder="Password" method="post" action="login.php">
+                    <input type="radio" name="remember" value="yes" method="post" action="login.php"> Remember me<br>
+                </div>
+            </ul>
+        </li>
+        
+    
+    </ul>
+  </div>
+</nav>
+ 
+    
+<section class="row">
+    
+   <div class="col-md-10 col-lg-12">         
+            
+        <div class="textcontainer">
+            <h1>EduCamps For You</h1>
+            <p>Searching for a fun, educational summer camp for your child?</p>
+            <p>Look no further than EduCamps: the Bay Area's premiere program for introduction to computers and technology. 
+            EduCamps is the top-rated Bay Area summer camp for fun, team
+            projects created specifically for children's enjoyment and educational enrichment. 
+            Our staff ensures that campers get a head start in computer engineering as the world 
+            becomes more technologically advanced, and the need for engineers becomes greater than ever before.</p>
+            
+            <img class="image" src="/images/compy.jpg" alt="computers" style="max-width:500px; float:left" > 
+            
+        <br>
+			<p>For more information about day to day information, locations, 
+                and camp sign ups, visit our <a href="registration.php">registration</a> page.
+			 If you still aren't completely convinced that EduCamps summer camps are the best around, take a look at what other parents and satisfied campers have to say on our <a href="forumindex.html">forums.</a>Feel free to ask questions and leave your own comments as well! To see our happy campers and pictures of our facilities, check our <a href="momenttindex.html">moments</a> page, where you can share your own images as well. For visual statistics about enrollment at Educamps, take a look at our prepared <a href="visualindex.html">interactive graphs</a>
+                On our site <a href="catalogindex.html">catalog</a> you can buy EduCamps merchandise such as T-shirts, or you can check out <a href="activityindex.html">games</a> that your child can play and learn to create in our camps.</p>
+        </div>
+
+        <div>
+        <br>
+       
+            <img class="image" src="/images/tablets.jpg" alt="tablets" style="max-width:500px; float:right" > 
+
+            <h2>About Our Camps</h2>
+            
+           <p>Educamps offers abudant activites for your children including robotics, sports, and creative art projects. From computer programming to teamwork exercises, EduCamps imparts valueable beginning skills for young people interested in engineering and science, as well as children just being introduced to technology.</p>
+           <p> Our camps are located at some of the best university campuses in the bay area such as Santa Clara Univeristy, San Jose State University, and University of California Berkeley. EduCamps offers both one and two week camp package options at these sites.</p>
+        
+       
+       </div>
+        
+    </div>
+       
+</section>
+<br><br>
+    
+
+<h2> Locations Near You </h2>
+            
+<div id="map" style="width: 500px; height: 400px;"></div>
+
+
+<br>
+<script type="text/javascript">
+    var locations = [
+      ['Santa Clara University', 37.3496, -121.9390],
+      ['Berkely', 37.8716, -122.2727],
+      ['San Jose State University', 37.3352, -121.8811]
+    ];
+  var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: new google.maps.LatLng(37.3496, -121.9390),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        animation:google.maps.Animation.BOUNCE,
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+<script src="script.js"></script>
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>Copyright 2017 EduCamps_DreamTeam</p>  
+</footer>
+
+    
+    
+
+</div>
+</body>
+</html>

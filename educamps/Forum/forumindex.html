@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<title>EduCamps</title>
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+                
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="forumstyle.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container-fluid">
+    <div class="page-header">
+            <img src="/images/header.png" class="img-responsive center-block" alt="Header">
+    </div>
+</div>
+    
+</head>
+    
+    
+<body>
+    
+<div class="container-fluid">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="homeindex.php">Kids Camp</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="homeindex.php">Home</a></li>
+        <li><a href="registerindex.php">Register</a></li>
+        <li><a href="catalogindex.html">Catalog</a></li>
+        <li><a href="forumindex.html">Forum</a></li>
+        <li><a href="momentindex.html">Moments</a></li>
+        <li><a href="visualindex.html">Visualization</a></li>
+        <li><a href="activitiesindex.html">Activites</a></li>
+    
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="shoppingcart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart </a></li>
+        
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up
+        <span class="caret"></span></a>  
+             <ul class="dropdown-menu">
+                    <div class="form-group">
+                        <label><b>Username</b></label>
+                          <input type="text" placeholder="Enter Username" name="name" method="post" action="register.php" required>
+                          <label><b>Email</b></label>
+                          <input type="text" placeholder="Enter Email" name="email" method="post" action="register.php" required />
+                          <label><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="pwd" method="post" action="register.php" required>
+                    </div>
+            </ul>
+        </li>
+            
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Login
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" method="post" action="login.php">
+                    <input type="text" class="form-control" placeholder="Password" method="post" action="login.php">
+                    <input type="radio" name="remember" value="yes" method="post" action="login.php"> Remember me<br>
+                </div>
+            </ul>
+        </li>
+        
+    
+    </ul>
+  </div>
+</nav>
+ 
+    
+<section class="row">
+    
+   <div class="col-md-10 col-lg-12">           
+            
+        <div class="textcontainer">
+            <h1>You can post your comments for our camps!</h1>
+            	<div id="comment" class="animate form">
+				<form  action="forum.php" method="post" autocomplete="on"> 
+					<h2> Share your favorite memories below</h2> 
+					
+						<label for="username">Username:</label> <br>
+						<input type="text" placeholder="username" name="username" required="required" />
+					<br>
+						<label for="email">Email:</label> <br>
+						<input type="text" name="email"  placeholder="yourname@gmail" required="required" />
+					<br><br>
+						<label for="comment">Comment:</label> <br>
+						<textarea type="text" name="comment" placeholder="What are some of your best memories?" required="required" class="comment"></textarea>
+                    <br>
+	               	<input type="submit" value="submit"> 
+                    
+                </form>
+                </div>
+         </div>  
+   </div>
+</section>
+<br><br>
+<section class="row">
+  <div>
+    <?php
+      $servername = getenv('IP');
+      $username = getenv('C9_USER');
+      $password = "";
+      $database = "c9";
+      $dbport = 3306;
+      // Create connection
+      $conn = mysqli_connect($servername, $username, $password, $database, $dbport);
+      // Check connection
+      if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+      }
+      $sql = "SELECT username, comment FROM forum";
+      $result = mysqli_query($conn, $sql);
+    
+      if (mysqli_num_rows($result) == 0) {
+        // output data of each row
+         echo "0 results";
+      } else {
+        echo "<table style='margin: auto'>";
+        while($row = mysqli_fetch_assoc($result)) { 
+         echo"<tr> <td style='border:1px solid black'>";
+         echo $row["username"];
+        echo" </td> <td style='border:1px solid black'>";
+         echo $row["comment"];
+        echo"</td> </tr>";
+        }
+        echo "</table>";
+      }
+
+    ?>
+  </div>
+</section>
+</div>
+</body>
+
+
+<footer class="container-fluid text-center">
+  <p>Copyright 2017 EduCamps_DreamTeam</p>  
+</footer>
+
+    
+    
+<!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,307 @@
+<?php
+if (isset($_POST['delete'])) {
+
+    $servername = getenv('IP');
+    $username = getenv('C9_USER');
+    $password = "";
+    $database = "c9";
+    $dbport = 3306;
+
+    // Create connection
+    $db = new mysqli($servername, $username, $password, $database, $dbport);
+
+    // Check connection
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    } 
+
+	$id=$_POST["id"];
+    $type=$_POST["type"];
+    
+    if($type == 'delete') {
+        $sql ="UPDATE shoppingcart SET status='0' WHERE id = '".$id."'";
+    }
+    
+	$db->query($sql);
+}
+?>
+
+<html>
+    <div>Shopping Cart</div>
+    <table border='1'>
+        <tr>
+            <th>Product</th><th>kidname</th><th>dob</th><th>parentname</th><th>parentemail</th><th>parentphone</th><th>camplocation</th><th>Start Date</th><th>End Date</th><th>Price</th><th>Delete</th>
+        </tr>
+        
+        
+        
+    <?php
+    
+          //JUST COPY AND PASTE FROM HERE 
+        $servername = getenv('IP');
+        $username = getenv('C9_USER');
+        $password = "";
+        $database = "c9";
+        $dbport = 3306;
+    
+        // Create connection
+        $db = new mysqli($servername, $username, $password, $database, $dbport);
+    
+        // Check connection
+        if ($db->connect_error) {
+            die("Connection failed: " . $db->connect_error);
+            exit;
+        } 
+        
+        $parentNameList = array();
+    	$sql = "SELECT parentname FROM shoppingcart where userId='".$_COOKIE["id"]."' and status = '1'";
+		$result = mysqli_query($db, $sql);
+		while($row = mysqli_fetch_assoc($result)) { 
+		    array_push($parentNameList, $row['parentname']);
+		}
+		
+    	$sql = "SELECT id, Type, kidname, dob, parentname, parentemail, parentphone, grade, school, allergies, campID, productID FROM shoppingcart where userId='".$_COOKIE["id"]."' and status = '1'";
+		$result = mysqli_query($db, $sql);
+		$flag = 0;
+		$price = 0;
+		$sum = 0;
+		
+		while($row = mysqli_fetch_assoc($result)) { 
+			
+		    if ($row["Type"]==registration)
+		        $flag = 1;
+		}		    
+		$sql = "SELECT id, Type, kidname, dob, parentname, parentemail, parentphone, grade, school, allergies, campID, productID FROM shoppingcart where userId='".$_COOKIE["id"]."' and status = '1'";
+		$result = mysqli_query($db, $sql);
+		while($row = mysqli_fetch_assoc($result)) { 
+			
+		            $sql5 = "SELECT id, cost, campsite,startdate,enddate FROM camps where id='".$row["campID"]."'";
+		            $camp = mysqli_query($db, $sql5);
+		            $row_camp = mysqli_fetch_assoc($camp);
+		            $price = $row_camp["cost"]; 
+		            $startDate = $row_camp["startdate"];
+		            $endDate = $row_camp["enddate"];
+		            $location = $row_camp["campsite"];
+		            $sql = "SELECT id,item FROM catalog where id = '".$row["productID"]."'";
+		            $product_r = mysqli_query($db, $sql);
+		            $productName = mysqli_fetch_assoc($product_r)["item"];
+		           	echo $endDate;
+		    ?>
+		    <tr>
+		        <td><?php echo $productName?></td>
+		        <td><?php echo $row["kidname"] ?></td>
+		        <td><?php echo $row["dob"] ?></td>
+		        <td><?php echo $row["parentname"] ?></td>
+		        <td><?php echo $row["parentemail"] ?></td>
+		        <td><?php echo $row["parentphone"] ?></td>
+		        <td><?php echo$location?></td>
+		        <td><?php echo$startDate?></td>
+		        <td><?php echo$endDate?></td>
+		        <td>
+		            <?php
+		                if ($row["Type"] == "registration") {   
+		                    $sql = "SELECT cost FROM camps where id='".$row["campID"]."'";
+		                    $r1 = mysqli_query($db, $sql);
+		                    $price = mysqli_fetch_assoc($r1)["cost"]; 
+		                    if(count(array_keys($parentNameList, $row["parentname"])) > 1) {
+		                        $price = $price*0.90;
+		                        $sum += $price;
+		                        echo("$".$price."   ");
+		                        echo "(10% discount!!)";
+		                    } else {
+		                    	$sum += $price;
+		                    	echo("$".$price);
+		                    }
+		                }else {
+		                    $sql = "SELECT cost FROM catalog where id='".$row["productID"]."'";
+		                    $r2 = mysqli_query($db, $sql);
+		                    $price = mysqli_fetch_assoc($r2)["cost"];
+		                    if($flag == 1) {
+		                        $price = $price*0.85;
+		                        $sum += $price;
+		                        echo("$".$price."   ");
+		                        echo "(15% discount!!)";
+		                    } else {
+		                        $sum += $price;
+		                        echo("$".$price);
+		                    }
+		                }
+		                
+		            ?>
+		        </td>
+		        <td>
+		            <form action="shoppingcart.php" method="post">
+                      <input type="hidden" name="id" value="<?php echo $row["id"] ?>" />
+                      <input type="hidden" name="type" value="delete" />
+                      <input type="submit" name="delete" value="Delete"></button>
+            	    </form>
+		        </td>
+		    </tr>
+		    <?php
+		    } 
+		    
+    //     	if ($row["parentname"] == $parentname) {
+    //     		echo "<br>"."HEREEEEE".$row["parentname"].$parentname."<br>";
+				// break;
+    //     	}
+    
+    /*    $sql = "SELECT productID FROM shoppingcart where userId='".$_COOKIE["id"]."' and status = '1'";
+		$result = mysqli_query($db, $sql);
+		while($row = mysqli_fetch_assoc($result)) { 
+		    ?>
+		    <tr>
+		        <td><?php echo $row["kidname"] ?></td>
+		        <td><?php echo $row["dob"] ?></td>
+		        <td><?php echo $row["parentname"] ?></td>
+		        <td><?php echo $row["parentemail"] ?></td>
+		        <td><?php echo $row["parentphone"] ?></td>
+		        <td><?php echo $row["camplocation"] ?></td>
+		        <td>
+		            <?php
+		                if(count(array_keys($parentNameList, $row["parentname"])) > 1) {
+		                    echo "10% discount!!";
+		                }
+		            ?>
+		        </td>
+		        <td>
+		            <form action="shoppingcart.php" method="post">
+                      <input type="hidden" name="id" value="<?php echo $row["id"] ?>" />
+                      <input type="hidden" name="type" value="delete" />
+                      <input type="submit" name="delete" value="Delete"></button>
+            	    </form>
+		        </td>
+		    </tr>
+		    <?php
+    //     	if ($row["parentname"] == $parentname) {
+    //     		echo "<br>"."HEREEEEE".$row["parentname"].$parentname."<br>";
+				// break;
+    //     	}
+       } */
+        
+    
+    
+   
+    ?>
+    </table>
+    
+    <?php  echo ("sum: ".$sum);?>
+                    <form action="shoppingcart.php" method = "post">
+                        
+                     <label for="cardtype">Card Type</label> 
+						<input type="text" placeholder="MC, Visa, AE" name="cardtype" required="required" />
+					<br> 
+                    <label for="cardname">Card Holder Name</label>
+					<input type="text" placeholder="First Last" name="cardname" required="required" />
+					<br>
+					<label for="cardnum">Card Number</label> 
+						<input type="text" placeholder="xxxx-xxxx-xxxx-xxx" name="cardnum" required="required" />
+					<br>
+					
+                    <label for="expire">Expiration Date</label> 
+						<input type="text" placeholder="mm/yy" name="expire" required="required" />
+					<br>
+					<label for="sercure">Security Number</label> 
+						<input type="text" placeholder="### (the digits on the back)" name="expire" required="required" />
+					<br>
+					<input name="submit" type="submit" value="Finish Payment" /> 
+					</form>
+<?php
+if (isset($_POST['submit'])) {
+    $servername = getenv('IP');
+    $username = getenv('C9_USER');
+    $password = "";
+    $database = "c9";
+    $dbport = 3306;
+
+    // Create connection
+    $db = new mysqli($servername, $username, $password, $database, $dbport);
+
+    // Check connection
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    } 
+    echo "Connected successfully (".$db->host_info.")";
+
+	$kidname=$_POST["cardtype"];
+    $cardname=$_POST["cardname"];
+    $cardnum=$_POST["cardnum"];
+    $expire=$_POST["expire"];
+    $secure=$_POST["secure"];
+    
+    $sql ="INSERT INTO payment (cardtype, cardname, cardnum, expire, secure, amount) 
+    VALUES('".$cardtype."', '".$cardname."',   
+    '".$cardnum."','".$expire."', 
+    '".$secure."','".$sum."')";
+    
+	echo($sql);
+
+	if ($db->query($sql)==TRUE){
+       	echo "record created";
+	    } else {
+		   //     echo"ERRROR:" .$sql . "<br>" . $db->error;
+	    $db->close();
+	} 
+	
+	// Put active registrations into registration table
+	echo($flag);
+		$sql = "SELECT id, Type, productID,kidname, dob, parentname, parentemail, parentphone, grade, school, allergies, campID FROM shoppingcart where userId='".$_COOKIE["id"]."' and status = '1'";
+		$result = mysqli_query($db, $sql);
+		echo ($sql);
+		while($row = mysqli_fetch_assoc($result)) { 
+			$id=$row["id"];
+		    $type = $row["Type"];
+			$kidname=$row["kidname"];
+		    $dob=$row["dob"];
+		    $parentname=$row["parentname"];
+		    $parentemail=$row["parentemail"];
+		    $parentphone=$row["parentphone"];
+		    $grade=$row["grade"];
+		    $school=$row["school"];
+		    $allergies=$row["allergies"];
+		    $campID=$row["campID"];
+		    $productID=$row["productID"];
+		    
+			
+		    
+			if ($type == "registration") {   
+			    $sql ="INSERT INTO registration (kidname, dob, parentname, parentemail, parentphone, grade, school, allergies, campID)
+			    VALUES('".$kidname."', '".$dob."',   
+			    '".$parentname."', '".$parentemail."', '".$parentphone."', 
+			    '".$grade."', '".$school."', '".$allergies."', 
+			    '".$campID."')";
+			    if ($db->query($sql)==TRUE){
+			       	echo "record created";
+			       	$sqlDelete ="UPDATE shoppingcart SET status='0' WHERE id = '".$id."'";
+			       	$db->query($sqlDelete);
+				 } else {
+					echo"ERRROR:" .$sql . "<br>" . $db->error;
+				    $db->close();
+				} 
+			} else {
+				$sql = "SELECT cost FROM catalog where id='".$row["productID"]."'";
+		    	$r2 = mysqli_query($db, $sql);
+		    	$cost = mysqli_fetch_assoc($r2)["cost"];
+				$sql ="INSERT INTO orders (userID, productID, cost)
+			    VALUES('".$_COOKIE["id"]."', '".$productID."', 
+			    '".$cost."')";
+			    if ($db->query($sql)==TRUE){
+			       	echo "record created";
+			       	$sqlDelete ="UPDATE shoppingcart SET status='0' WHERE id = '".$id."'";
+			       	$db->query($sqlDelete);
+			       	?> <script 
+			       			alert("Payment Submitted!");
+			       		</script>
+			    <?php   	
+				 } else {
+					echo"ERRROR:" .$sql . "<br>" . $db->error;
+				    $db->close();
+				} 
+			}
+			}
+	header("Location: https://project-orangejuz.c9users.io/shoppingcart.php");
+	exit;
+}
+
+?>
+    
+</html>
