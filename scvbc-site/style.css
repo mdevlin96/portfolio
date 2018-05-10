@@ -28,7 +28,7 @@
 
 
 .jumbotron {
-    background-image: url(images/eyeball.png);
+    background-image: url('images/eyeball.png');
     background-repeat:no-repeat;
     background-size: cover;
     height: 450px;
